@@ -1,0 +1,1 @@
+hashcat -a 0 allWords.txt -r /usr/share/hashcat/rules/best64.rule --stdout >> allWordsPermutated.txt

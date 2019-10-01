@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SocialData {
 
@@ -9,6 +11,13 @@ public class SocialData {
     public SocialData(String fbUrlIn, String liUrlIn){
         this.fbUrl = fbUrlIn;
         this.liUrl = liUrlIn;
+    }
+
+    public void generateLists(){
+        List<String> params = new ArrayList<String>();
+        params.add(this.fbUrl);
+        params.add(this.liUrl);
+        BashRunner.runProcess("./bashScripts/cewl.sh", params);
     }
 
     public void retrieveSocial(){
@@ -26,6 +35,14 @@ public class SocialData {
             this.liUrl = liUrlIn;
 
         userInput.close();
+    }
+
+    public Boolean hasData() {
+        if(this.fbUrl == null)
+            return false;
+        if(this.liUrl == null)
+            return false;
+        return true;
     }
 
 

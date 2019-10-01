@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.lang.StringBuilder;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Generator {
 
@@ -16,18 +17,28 @@ public class Generator {
     }
 
     public void generateAll(){
-
         //write personal data to file
-        if(this.personalData.hasData())
+        if(this.personalData.hasData()) {
             this.personalData.writePersonal();
+            //this is working well!!
+            this.personalData.generateCombinations();
+        }
 
-        //run hashcat cewl on personal data
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("asdf");
-        list.add("hsdfgq");
-        list.add("req");
-        BashRunner.runProcess("./cewl.sh", list);
+        /*
+        //run cewl on social URLs
+        if(this.socialData.hasData()){
+            this.socialData.generateLists();
+        }
 
+        //generate permutations
+        this.generatePermutations();
+        */
+
+    }
+
+    public void generatePermutations() {
+        List<String> params = new ArrayList<String>();
+        BashRunner.runProcess("./bashScripts/socialPermutate.sh", params);
     }
 
 }
