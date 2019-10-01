@@ -43,7 +43,7 @@ public class PersonalData {
         //should just run a hashcat combination thing
         //maybe just do it myself
 
-        List<String> allWords = FileWriter.readInFileToList("./wordLists/testList.txt");
+        List<String> allWords = FileWriter.readInFileToList("./wordLists/personalList.txt");
         List<String> allCombinations = new ArrayList<String>();
 
         for(String word: allWords){
@@ -51,7 +51,7 @@ public class PersonalData {
             allCombinations.addAll(combinationsForOneWord);
         }
 
-        FileWriter.writeStringToFile("./wordLists/allCombinations.txt", convertListToString(allCombinations));
+        FileWriter.writeStringToFile("./wordLists/personalList.txt", convertListToString(allCombinations));
     }
 
     public String convertListToString(List<String> allWords){
